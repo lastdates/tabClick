@@ -20,11 +20,11 @@
 			if(e.d.eq(x).css('display')=='block')self=1;
 			if(e.t==2)t=x;else e.a=-1;
 			if(t > -1){e.h.eq(t).removeClass('active');e.d.eq(t).hide();}
-			if(!e.t || !self){e.h.eq(x).addClass('active');e.d.eq(x).show();e.a=x;}
+			if(!e.t || !self){e.h.eq(x).addClass('active');e.d.eq(x).show();e.a=x;if(e.c)e.c(x,self);}
 		}
 	};
-	$.fn.tabClickInit=function(name,heads,data,type,tabopen,hover,keyboard){
-		T[name]={t:type,h:$(heads),d:$(data),a:-1};
+	$.fn.tabClickInit=function(name,heads,data,type,tabopen,hover,keyboard,callback){
+		T[name]={t:type,h:$(heads),d:$(data),a:-1,c:callback};
 		var e=T[name],f=$().tabClick,t,y;
 		e.l = (e.h.length > e.d.length) ? e.d.length : e.h.length ;
 		e.d.hide();
