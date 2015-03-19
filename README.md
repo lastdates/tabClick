@@ -5,7 +5,7 @@ tabClick makes creating tabs in content super easy
 * [Live Demo](http://code.mgvz.com/tabClick/)
 
 
-To include vSort plugin
+To include tabClick plugin
 ```html
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript" src="jquery.tabClick.min.js"></script>
