@@ -1,6 +1,6 @@
 # tabClick
-tabClick makes creating tabs in content super easy
-* less than 1.2kB
+tabClick makes creating powerful tabs in content super easy
+* less than 1.3kB
 * Tested in IE8, FireFox, Chrome
 * [Live Demo](http://code.mgvz.com/tabClick/)
 
@@ -22,13 +22,14 @@ $(document).ready(function(){
 		,tabOpenByDefault
 		// 0 - first tab
 		// 1 - second tab
-		// [] - none open
-		// [2,3] - second and third tab (in type 2)
+		// -1 - close all tabs
 		// 'a' - open all tabs (in type 2)
-		// 'c' - close all tabs
+		// [] - none open (same as -1)
+		// [2,3] - second and third tab (in type 2)
 		,isLazyHover
 		// 0 - no effect on hover
 		// 1 - simulate click on hover after 380ms
+		// 2 - show on hover (instantly)
 		,iskeyboardArrows
 		// 0 - no effect of arrow keys
 		// 1 - changes tab with left/right arrow keys
@@ -43,7 +44,7 @@ Opened tab will have class="active" for styling reference
 Sample code
 ```javascript
 $(document).ready(function(){
-	$().tabClickInit('P','.score span','.section span',2,[2,3,'a','c'],1,1);
+	$().tabClickInit('P','.score span','.section span',2,[2,3],1,1);
 });
 ```
 
@@ -52,5 +53,5 @@ To change Tab via script
 $().tabClick('P',2); // open third tab
 $().tabClick('P',[2,3]); // open third, fourth tab
 $().tabClick('P','a'); // open all tabs
-$().tabClick('P','c'); // close all tabs
+$().tabClick('P',-1); // close all tabs
 ```
