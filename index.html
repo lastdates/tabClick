@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>tabClick by lastdates</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>tabClick</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/lastdates/tabClick">View the Project on GitHub <small>lastdates/tabClick</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/lastdates/tabClick/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/lastdates/tabClick/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/lastdates/tabClick">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="tabclick" class="anchor" href="#tabclick" aria-hidden="true"><span class="octicon octicon-link"></span></a>tabClick</h1>
+
+<p>tabClick makes creating powerful tabs in content super easy</p>
+
+<ul>
+<li>less than 1.3kB</li>
+<li>Tested in IE8, FireFox, Chrome</li>
+<li><a href="http://code.mgvz.com/tabClick/">Live Demo</a></li>
+</ul>
+
+<p>To include tabClick plugin</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>jquery.tabClick.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>To create (initialize) tabs</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-c1">document</span>).ready(<span class="pl-k">function</span>(){
+    $().tabClickInit(<span class="pl-s"><span class="pl-pds">'</span>uniqueName<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>tabHeadSelector<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>tabContentSelector<span class="pl-pds">'</span></span>,
+        type
+        <span class="pl-c">// 0 - (open one tab at a time; tabbed content)</span>
+        <span class="pl-c">// 1 - (open/close tabs independently; faqs)</span>
+        <span class="pl-c">// 2 - (open one or none tab at a time; toggle menu)</span>
+        ,tabOpenByDefault
+        <span class="pl-c">// 0 - first tab</span>
+        <span class="pl-c">// 1 - second tab</span>
+        <span class="pl-c">// -1 - close all tabs</span>
+        <span class="pl-c">// 'a' - open all tabs (in type 2)</span>
+        <span class="pl-c">// [] - none open (same as -1)</span>
+        <span class="pl-c">// [2,3] - second and third tab (in type 2)</span>
+        ,isLazyHover
+        <span class="pl-c">// 0 - no effect on hover</span>
+        <span class="pl-c">// 1 - simulate click on hover after 380ms</span>
+        <span class="pl-c">// 2 - show on hover (instantly)</span>
+        ,iskeyboardArrows
+        <span class="pl-c">// 0 - no effect of arrow keys</span>
+        <span class="pl-c">// 1 - changes tab with left/right arrow keys</span>
+        ,callbackFn
+        <span class="pl-c">// function(tabIndex,previousTabIndex){} - function to run after opening a tab</span>
+        <span class="pl-c">// functionName - function to run after opening a tab</span>
+    );
+});</pre></div>
+
+<p>Opened tab will have class="active" for styling reference</p>
+
+<p>Sample code</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-c1">document</span>).ready(<span class="pl-k">function</span>(){
+    $().tabClickInit(<span class="pl-s"><span class="pl-pds">'</span>P<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>.score span<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>.section span<span class="pl-pds">'</span></span>,<span class="pl-c1">2</span>,[<span class="pl-c1">2</span>,<span class="pl-c1">3</span>],<span class="pl-c1">1</span>,<span class="pl-c1">1</span>);
+});</pre></div>
+
+<p>To change Tab via script</p>
+
+<div class="highlight highlight-javascript"><pre>$().tabClick(<span class="pl-s"><span class="pl-pds">'</span>P<span class="pl-pds">'</span></span>,<span class="pl-c1">2</span>); <span class="pl-c">// open third tab</span>
+$().tabClick(<span class="pl-s"><span class="pl-pds">'</span>P<span class="pl-pds">'</span></span>,[<span class="pl-c1">2</span>,<span class="pl-c1">3</span>]); <span class="pl-c">// open third, fourth tab</span>
+$().tabClick(<span class="pl-s"><span class="pl-pds">'</span>P<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>); <span class="pl-c">// open all tabs</span>
+$().tabClick(<span class="pl-s"><span class="pl-pds">'</span>P<span class="pl-pds">'</span></span>,<span class="pl-k">-</span><span class="pl-c1">1</span>); <span class="pl-c">// close all tabs</span></pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/lastdates">lastdates</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
