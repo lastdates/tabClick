@@ -17,8 +17,8 @@ $(document).ready(function(){
 	$().tabClickInit('uniqueName','tabHeadSelector','tabContentSelector',
 		type
 		// 0 - (open one tab at a time; tabbed content)
-		// 1 - (open/close tabs independently; faqs)
-		// 2 - (open one or none tab at a time; toggle menu)
+		// 1 - (open one or none tab at a time; toggle menu)
+		// 2 - (open/close tabs independently; faqs)
 		,tabOpenByDefault
 		// 0 - first tab
 		// 1 - second tab
