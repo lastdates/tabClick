@@ -1,12 +1,12 @@
 /**
-* tabClick 1.0
+* tabClick 1.2
 * tabClick makes creating tabs in content super easy
 *
 * Copyright 2015, Atul Gupta
 * Licensed under the MIT license.
 * https://github.com/lastdates/tabClick
 *
-* Date: Thu Mar 19 2015 02:29:11 GMT+0530 (IST)
+* Date: Fri Dec 04 2015 02:29:11 GMT+0530 (IST)
 */
 (function($){
 	var T={},
@@ -38,7 +38,7 @@
 	},
 	c=function(p){
 		f(p.data[0],p.data[1]);
-		return false;
+		if($(p.data[3]).prop("tagName") == "A") return false;
 	};
 	$.fn.tabClickInit=function(name,heads,data,type,tabopen,hover,keyboard,callback){
 		T[name]={t:type,h:$(heads),d:$(data),a:-1,c:callback};
@@ -47,7 +47,7 @@
 		e.d.hide();
 		h.removeClass('active')
 			.each(function(i){
-				$(this).on("click",[name,i],c);
+				$(this).on("click",[name,i,this],c);
 			});
 		if('ontouchstart' in window)
 			h.each(function(i){
@@ -59,11 +59,11 @@
 						E.preventDefault ?
 							E.preventDefault() : 
 							E.returnValue=false;
-						this.click;
+						this.click();
 					}
 				});
 			});
-		if(hover)
+		else if(hover)
 			(hover == 1) ?
 				h.each(function(i){
 					$(this).on("mouseover",[name,i],function(p){t=setTimeout(function(){c(p)},380);});
